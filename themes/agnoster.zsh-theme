@@ -76,7 +76,7 @@ prompt_git() {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
 
     if [[ -n $dirty ]]; then
-      if [[ 0 -lt $(echo $(git status) | grep -c "Untracked files") ]]; then
+      if [[ 0 -lt $(git status --porcelain -b | grep -c -E "^.(\?|M) ") ]]; then
         prompt_segment red black
       else
         prompt_segment yellow black
