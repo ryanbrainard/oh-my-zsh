@@ -107,11 +107,24 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
+prompt_cloud() {
+  if [[ $HEROKU_CLOUD = 'production' ]]; then
+    prompt_segment white red "☁ "
+  elif [[ $HEROKU_CLOUD = '' ]]; then
+    prompt_segment white red "☁ "
+  elif [[ $HEROKU_CLOUD = 'brainard-caas' ]]; then
+    prompt_segment white blue "☁" 
+  else
+    prompt_segment white blue "☁ $HEROKU_CLOUD"
+  fi
+}
+
 ## Main prompt
 build_prompt() {
   RETVAL=$?
   prompt_status
   prompt_context
+  prompt_cloud
   prompt_dir
   prompt_git
   prompt_end
