@@ -112,7 +112,7 @@ prompt_cloud() {
     prompt_segment white red "☁ "
   elif [[ $HEROKU_CLOUD = '' ]]; then
     prompt_segment white red "☁ "
-  elif [[ $HEROKU_CLOUD = 'brainard-caas' ]]; then
+  elif [[ $HEROKU_CLOUD = $DEFAULT_CLOUD ]]; then
     prompt_segment white blue "☁" 
   else
     prompt_segment white blue "☁ $HEROKU_CLOUD"
