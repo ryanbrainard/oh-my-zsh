@@ -109,11 +109,11 @@ prompt_status() {
 
 prompt_cloud() {
   if [[ $HEROKU_CLOUD = 'production' || $HEROKU_CLOUD = '' ]]; then
-    prompt_segment blue black "☁ "
+    prompt_segment blue white "☁ "
   elif [[ $HEROKU_CLOUD = $DEFAULT_CLOUD ]]; then
-    prompt_segment blue white "☁" 
+    prompt_segment blue black "☁" 
   else
-    prompt_segment blue white "☁ $HEROKU_CLOUD"
+    prompt_segment blue black "☁ $HEROKU_CLOUD"
   fi
 }
 
