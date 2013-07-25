@@ -113,7 +113,7 @@ prompt_cloud() {
   elif [[ $HEROKU_CLOUD = $DEFAULT_CLOUD ]]; then
     prompt_segment blue black "☁" 
   else
-    prompt_segment blue black "☁ $HEROKU_CLOUD"
+    prompt_segment blue black "$HEROKU_CLOUD ☁ "
   fi
 }
 
