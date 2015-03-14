@@ -110,16 +110,19 @@ prompt_status() {
 prompt_cloud() {
   if [[ $HEROKU_CLOUD = 'production' || $HEROKU_CLOUD = '' ]]; then
     prompt_segment blue white "☁ "
-  elif [[ $HEROKU_CLOUD = $DEFAULT_CLOUD ]]; then
-    prompt_segment blue black "☁" 
   else
     prompt_segment blue black "$HEROKU_CLOUD ☁ "
   fi
 }
 
+prompt_date() {
+  prompt_segment black grey $(date --utc +"%H:%M")
+}
+
 ## Main prompt
 build_prompt() {
   RETVAL=$?
+  prompt_date
   prompt_status
   prompt_context
   prompt_cloud
